@@ -166,7 +166,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\StudentAddpage.xaml">
+    <Page Include="Pages\StudentAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -185,8 +185,8 @@
     <Compile Include="Pages\ExamPage.xaml.cs">
       <DependentUpon>ExamPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\StudentAddpage.xaml.cs">
-      <DependentUpon>StudentAddpage.xaml</DependentUpon>
+    <Compile Include="Pages\StudentAdd.xaml.cs">
+      <DependentUpon>StudentAdd.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\StudentsPage.xaml.cs">
       <DependentUpon>StudentsPage.xaml</DependentUpon>
