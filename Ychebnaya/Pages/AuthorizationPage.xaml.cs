@@ -39,10 +39,20 @@ namespace Ychebnaya.Pages
                 string password = passwordTb.Password.Trim();
                 employee = new List<Employee>(DBConnection.ychebnayaEntities.Employee.ToList());
                 Employee employee2 = employee.FirstOrDefault(i => i.Id == login && i.Password == password);
-                if (employee2 != null)
+                if (employee2 != null && employee2.Doljnost == "преподаватель")
                 {
-                    NavigationService.Navigate(new ExamPage());
-                    MessageBox.Show($"Добро пожаловать {employee2.Surname}");
+                    MessageBox.Show($"Вы входите как {employee2.Surname} ({employee2.Doljnost})!");
+                    NavigationService.Navigate(new ExamPage(employee2));
+                }
+                else if (employee2 != null && employee2.Doljnost == "зав. кафедрой")
+                {
+                    MessageBox.Show($"Вы входите как {employee2.Surname} ({employee2.Doljnost})!");
+                    NavigationService.Navigate(new DepartmentPage());
+                }
+                else if (employee2 != null && employee2.Doljnost == "инженер")
+                {
+                    MessageBox.Show($"Вы входите как {employee2.Surname} ({employee2.Doljnost})!");
+                    NavigationService.Navigate(new IngenerPage());
                 }
                 else
                 {

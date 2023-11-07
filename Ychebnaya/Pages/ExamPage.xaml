@@ -29,7 +29,9 @@
             </Grid.RowDefinitions>
             <Button Background="Black" Foreground="White" Content="Back" FontSize="15" VerticalAlignment="Top" Margin="10" Click="Button_Click" />
             <TextBlock Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="27" FontStyle="Normal" FontWeight="Bold" >Список дисциплин</TextBlock>
-            <ListView Grid.Column="1"
+        <TextBlock Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="27" FontStyle="Normal" FontWeight="Bold" Name ="Prepod"></TextBlock>
+
+        <ListView Grid.Column="1"
 x:Name="DisciplinaLv"
 Grid.ColumnSpan="4"
 Grid.Row="2"
@@ -54,10 +56,10 @@ ItemsSource="{Binding examList}" SelectionChanged="DisciplinaLv_SelectionChanged
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Аудитория" Width="225">
+                            <GridViewColumn Header="Дисциплина" Width="225">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding auditoriya}"/>
+                                        <TextBlock Text="{Binding Disciplina.Name}"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>

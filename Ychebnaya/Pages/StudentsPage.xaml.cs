@@ -23,16 +23,16 @@ namespace Ychebnaya.Pages
     /// </summary>
     public partial class StudentsPage : Page
     {
-        private object selectedItem;
+        public static List<Exam> exams { get; set; }
 
         public static List<Student> students = new List<Student> {};
         public StudentsPage(Exam exam)
         {
             InitializeComponent();
             students = StudentFunction.GetStudents().ToList();
-            students = students.Where(x => exam.id_student == x.ID).ToList();
+            exams = new List<Exam>(DBConnection.ychebnayaEntities.Exam.ToList().Where(x => x.date == exam.date && x.Disciplina == exam.Disciplina));
             this.DataContext = this;
-            StudentLv.ItemsSource = students;
+            StudentLv.ItemsSource = exams;
             
 
 

@@ -24,11 +24,15 @@ namespace Ychebnaya.Pages
     public partial class ExamPage : Page
     {
         public static ObservableCollection<Exam> examList { get; set; }
-        public ExamPage()
+        public static List<Employee> employees { get; set; }
+        public static List<Prepod> prepods = new List<Prepod>();
+        public ExamPage(Employee employee2)
         {
             InitializeComponent();
-            examList = ExamFunction.GetExam();
+            prepods = new List<Prepod>(DBConnection.ychebnayaEntities.Prepod.ToList().Where(x => x.Id_Employee == employee2.Id));
             this.DataContext = this;
+            examList = ExamFunction.GetExam();
+            Prepod.Text = employee2.Surname;
             
         }
 

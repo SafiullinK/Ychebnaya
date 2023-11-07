@@ -158,11 +158,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\DepartmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\DisciplinePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ExamPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\IngenerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -179,11 +187,17 @@
     <Compile Include="Pages\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\DepartmentPage.xaml.cs">
+      <DependentUpon>DepartmentPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\DisciplinePage.xaml.cs">
       <DependentUpon>DisciplinePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ExamPage.xaml.cs">
       <DependentUpon>ExamPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\IngenerPage.xaml.cs">
+      <DependentUpon>IngenerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\StudentAdd.xaml.cs">
       <DependentUpon>StudentAdd.xaml</DependentUpon>
