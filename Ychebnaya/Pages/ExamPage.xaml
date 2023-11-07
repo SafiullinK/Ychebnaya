@@ -8,7 +8,64 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ExamPage">
 
-    <Grid>
-        
-    </Grid>
+        <Grid  Background="PeachPuff">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Background="Black" Foreground="White" Content="Back" FontSize="15" VerticalAlignment="Top" Margin="10" Click="Button_Click" />
+            <TextBlock Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="27" FontStyle="Normal" FontWeight="Bold" >Список дисциплин</TextBlock>
+            <ListView Grid.Column="1"
+x:Name="DisciplinaLv"
+Grid.ColumnSpan="4"
+Grid.Row="2"
+Grid.RowSpan="4"
+ItemsSource="{Binding examList}" SelectionChanged="DisciplinaLv_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn Header="Id" Width="100">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding Id}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Дата" Width="200">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding date}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Аудитория" Width="225">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding auditoriya}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView.Columns>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </Grid>
+
 </Page>

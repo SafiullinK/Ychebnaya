@@ -19,27 +19,43 @@ using Ychebnaya.Function;
 namespace Ychebnaya.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ExamPage.xaml
+    /// Логика взаимодействия для StudentsPage.xaml
     /// </summary>
-    public partial class ExamPage : Page
+    public partial class StudentsPage : Page
     {
-        public static ObservableCollection<Exam> examList { get; set; }
-        public ExamPage()
+        private object selectedItem;
+
+        public static List<Student> students = new List<Student> {};
+        public StudentsPage(Exam exam)
         {
             InitializeComponent();
-            examList = ExamFunction.GetExam();
+            students = StudentFunction.GetStudents().ToList();
+            students = students.Where(x => exam.id_student == x.ID).ToList();
             this.DataContext = this;
+            StudentLv.ItemsSource = students;
             
+
+
         }
+
+        /*public StudentsPage(object selectedItem)
+        {
+            this.selectedItem = selectedItem;
+        }*/
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AuthorizationPage());
+            NavigationService.GoBack();
         }
 
         private void DisciplinaLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            NavigationService.Navigate(new StudentsPage((Exam)DisciplinaLv.SelectedItem));
+
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new StudentAdd());
         }
     }
 }
