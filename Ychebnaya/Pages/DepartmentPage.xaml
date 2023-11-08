@@ -30,14 +30,20 @@
         <Button Background="Black" Foreground="White" Content="Back" FontSize="15" VerticalAlignment="Top" Margin="10" Click="Button_Click" />
         <TextBlock Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="23" FontStyle="Normal" FontWeight="Bold" >Список депортаментов</TextBlock>
         <TextBlock Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="27" FontStyle="Normal" FontWeight="Bold" Name ="Prepod"></TextBlock>
-        <Button Background="Black" Foreground="White" Content="Add" FontSize="15" VerticalAlignment="Top" Grid.Column="4" Grid.Row="1" Margin="10" Click="Button_Click_1" />
-
+        <Button Background="Black" Foreground="White" Content="Add/Redact" FontSize="15" VerticalAlignment="Top" Grid.Column="4" Grid.Row="6" Margin="10" Click="Button_Click_1" />
+        <TextBlock Grid.Row="6" Grid.Column="0" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center">Название кафедры</TextBlock>
+        <TextBox  Name="DisciplinaNameTb" Foreground="black" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Margin="15" />
+        <TextBlock Grid.Row="7" Grid.Column="0" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center">Шифр</TextBlock>
+        <TextBox  Name="ObemTb" Foreground="black" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Margin="15" />
+        <ComboBox Grid.Row="7" x:Name="FackultyCb" Height="25" Grid.Column="3"/>
+        <TextBlock Grid.Row="6" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15" >Факультет</TextBlock>
         <ListView Grid.Column="1"
 x:Name="kafedraslv"
 Grid.ColumnSpan="4"
 Grid.Row="2"
 Grid.RowSpan="4"
-ItemsSource="{Binding Kafedra}" SelectionChanged="DisciplinaLv_SelectionChanged">
+ItemsSource="{Binding Kafedra}" SelectionChanged="DisciplinaLv_SelectionChanged"
+                  MouseDoubleClick="DisciplinaLv_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>

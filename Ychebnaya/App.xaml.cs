@@ -13,5 +13,6 @@ namespace Ychebnaya
     /// </summary>
     public partial class App : Application
     {
+        public static object DBConnection { get; internal set; }
     }
 }

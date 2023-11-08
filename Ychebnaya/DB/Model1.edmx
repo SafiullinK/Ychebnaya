@@ -4,16 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище YchebnayaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6013: Первичный ключ в таблице или представлении "Ychebnaya.dbo.Akademics" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
-        <EntityType Name="Akademics">
-          <Property Name="Akademics_id" Type="int" />
-          <Property Name="FIO" Type="nvarchar(max)" />
-          <Property Name="Date_of_Birth" Type="date" />
-          <Property Name="Specialization" Type="nvarchar" MaxLength="50" />
-          <Property Name="Year_prisvoy" Type="int" />
-        </EntityType>-->
+    <Schema Namespace="Хранилище YchebnayaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Animals_Safiullin">
           <Key>
             <PropertyRef Name="Id_Animal" />
@@ -53,7 +44,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Obem" Type="int" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Ispolnitel" Type="int" />
@@ -62,11 +53,11 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Shifr" Type="int" />
           <Property Name="Surname" Type="nvarchar" MaxLength="50" />
           <Property Name="Doljnost" Type="nvarchar" MaxLength="50" />
-          <Property Name="Zarplata" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="Zarplata" Type="decimal" Precision="9" Scale="0" />
           <Property Name="Shef" Type="int" />
           <Property Name="Password" Type="nvarchar" MaxLength="40" />
         </EntityType>
@@ -74,7 +65,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="date" Type="date" />
           <Property Name="id_discipline" Type="int" />
           <Property Name="id_student" Type="int" />
@@ -102,7 +93,7 @@
           <Key>
             <PropertyRef Name="Kafedra_id" />
           </Key>
-          <Property Name="Kafedra_id" Type="int" Nullable="false" />
+          <Property Name="Kafedra_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Shifr" Type="nvarchar" MaxLength="50" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Fackultet" Type="int" />
@@ -428,8 +419,7 @@
             <End Role="Zayavka" EntitySet="Zayavka" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="YchebnayaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -488,7 +478,7 @@
           <Property Name="Shifr" Type="Int32" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Doljnost" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Zarplata" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="Zarplata" Type="Decimal" Precision="9" Scale="0" />
           <Property Name="Shef" Type="Int32" />
           <Property Name="Password" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Kafedra" Relationship="Self.FK_Employee_Kafedra1" FromRole="Employee" ToRole="Kafedra" />

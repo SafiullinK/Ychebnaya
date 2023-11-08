@@ -8,7 +8,79 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="IngenerPage">
 
-    <Grid>
-        
+    <Grid  Background="PeachPuff">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Background="Black" Foreground="White" Content="Back" FontSize="15" VerticalAlignment="Top" Margin="10" Click="Button_Click" />
+        <TextBlock Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="27" FontStyle="Normal" FontWeight="Bold" >Список сотрудников</TextBlock>
+        <Button Background="Black" Foreground="White" Content="Add" Name="AddButton" FontSize="15" VerticalAlignment="Bottom" Margin="10" Grid.Column="4" Grid.Row="6" Click="AddButton_Click" />
+        <TextBlock Grid.Row="6" Grid.Column="0" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center">Фамилия</TextBlock>
+        <TextBox  Name="EmployeeName" Foreground="black" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Margin="15" />
+        <TextBlock Grid.Row="7" Grid.Column="0" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center">Должность</TextBlock>
+        <TextBox  Name="DoljnostTb" Foreground="black" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Margin="15" />
+        <TextBlock Grid.Row="7" Grid.Column="4" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Left">Зарплата</TextBlock>
+        <TextBox  Name="ZarplataTb" Foreground="black" Grid.Row="7" Grid.Column="4" Grid.ColumnSpan="2" Margin="60 15 60 15" />
+        <TextBlock Grid.Row="6" Grid.Column="3" FontSize="12" VerticalAlignment="Bottom" HorizontalAlignment="Center">Пароль</TextBlock>
+        <TextBox  Name="PasswordTb" Foreground="black" Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="1" Margin="15" />
+        <ListView Grid.Column="1"
+x:Name="DisciplinaLv"
+Grid.ColumnSpan="4"
+Grid.Row="2"
+Grid.RowSpan="4"
+ItemsSource="{Binding Employee}" SelectionChanged="DisciplinaLv_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Id" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Id}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Фамилия" Width="150">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Surname}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Должность" Width="125">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Doljnost}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Зарплата" Width="125">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Zarplata}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
     </Grid>
 </Page>
