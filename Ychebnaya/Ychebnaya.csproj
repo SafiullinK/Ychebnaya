@@ -174,10 +174,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\StudentAdd.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\StudentsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -198,9 +194,6 @@
     </Compile>
     <Compile Include="Pages\IngenerPage.xaml.cs">
       <DependentUpon>IngenerPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\StudentAdd.xaml.cs">
-      <DependentUpon>StudentAdd.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\StudentsPage.xaml.cs">
       <DependentUpon>StudentsPage.xaml</DependentUpon>

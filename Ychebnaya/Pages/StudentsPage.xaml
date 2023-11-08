@@ -28,8 +28,14 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Button Background="Black" Foreground="White" Content="Back" FontSize="15" VerticalAlignment="Top" Margin="10" Click="Button_Click" />
-        <Button Background="Black" Foreground="White" Content="Add" Name="AddButton" FontSize="15" VerticalAlignment="Bottom" Margin="10" Grid.Column="4" Grid.Row="6" Click="AddButton_Click" />
+        <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" Name="DisciplineNameTb"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" Name="DisciplineDateTb"></TextBlock>
 
+        <Button Background="Black" Foreground="White" Content="Add" Name="AddButton" FontSize="15" VerticalAlignment="Bottom" Margin="10" Grid.Column="4" Grid.Row="6" Click="AddButton_Click" />
+        <Button Background="Black" Foreground="White" Content="Delete" Name="DeleteButton" FontSize="15" VerticalAlignment="Bottom" Margin="10" Grid.Column="3" Grid.Row="6" Click="DeleteButton_Click" />
+
+        <TextBlock Grid.Row="6" Grid.Column="1" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center">рег. №</TextBlock>
+        <ComboBox Name="StudentCb" Foreground="black" Grid.Row="6" Grid.Column="2" Margin="15" VerticalAlignment="Bottom"/>
         <TextBlock Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="27" FontStyle="Normal" FontWeight="Bold" >Список студентов</TextBlock>
         <ListView Grid.Column="1"
 x:Name="StudentLv"

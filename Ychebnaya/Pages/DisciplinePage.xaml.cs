@@ -21,11 +21,18 @@ namespace Ychebnaya.Pages
     /// </summary>
     public partial class DisciplinePage : Page
     {
+       public static List<Disciplina> disciplina { get; set; }
         public DisciplinePage()
         {
             InitializeComponent();
-            DisciplinaLv.ItemsSource = new List<Disciplina>(DBConnection.ychebnayaEntities.Disciplina.ToList());
-            //TovarsLv.ItemsSource = new List<Tovar>(Connection.pracktica3Entities.Tovar.ToList());
+
+            DisciplinaLv.ItemsSource = new List<Disciplina>(DBConnection.ychebnayaEntities.Disciplina.ToList().Where(x => x.Ispolnitel == DepartmentPage.kaf.Kafedra_id));
+            this.DataContext = this;
+            DepartmentNameTb.Text = DepartmentPage.kaf.Name;
+            disciplina = new List<Disciplina>(DBConnection.ychebnayaEntities.Disciplina.ToList());
+            DisciplinaCb.ItemsSource = disciplina;
+            DisciplinaCb.DisplayMemberPath = "Name";
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -34,5 +41,45 @@ namespace Ychebnaya.Pages
             
         }
 
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DisciplinaLv.SelectedItem != null)
+            {
+                DBConnection.ychebnayaEntities.Disciplina.Remove(DisciplinaLv.SelectedItem as Disciplina);
+                DBConnection.ychebnayaEntities.SaveChanges();
+                MessageBox.Show("Данные удалены!");
+
+                DisciplinaLv.ItemsSource = new List<Disciplina>(DBConnection.ychebnayaEntities.Disciplina.ToList());
+            }
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(DisciplinaCb == null)
+            {
+                MessageBox.Show("Заполните все поля");
+            }
+            else
+            {
+                Disciplina disciplina = new Disciplina
+                {
+                    
+                    Obem = (DisciplinaCb.SelectedItem as Disciplina).Obem,
+                    Name = (DisciplinaCb.SelectedItem as Disciplina).Name,
+                    Ispolnitel = DepartmentPage.kaf.Kafedra_id
+
+                };
+                DBConnection.ychebnayaEntities.Disciplina.Add(disciplina);
+                DBConnection.ychebnayaEntities.SaveChanges();
+                MessageBox.Show("Данные записаны");
+                DisciplinaLv.ItemsSource = new List<Disciplina>(DBConnection.ychebnayaEntities.Disciplina.ToList());
+                DisciplinaCb.SelectedItem = null;
+            }
+        }
+
+        private void DisciplinaLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

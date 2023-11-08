@@ -22,6 +22,7 @@ namespace Ychebnaya.Pages
     public partial class DepartmentPage : Page
     {
         public static List<Kafedra> kafedras { get; set; }
+        public static Kafedra kaf { get; set; }
         public DepartmentPage()
         {
             InitializeComponent();
@@ -33,13 +34,20 @@ namespace Ychebnaya.Pages
 
         private void DisciplinaLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            kaf = kafedraslv.SelectedItem as Kafedra;
+            NavigationService.Navigate(new DisciplinePage());
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            NavigationService.Navigate(new AuthorizationPage());
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
 
         }
-        
     }
+        
 }
+

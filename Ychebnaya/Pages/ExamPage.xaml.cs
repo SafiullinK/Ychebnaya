@@ -26,6 +26,7 @@ namespace Ychebnaya.Pages
         public static ObservableCollection<Exam> examList { get; set; }
         public static List<Employee> employees { get; set; }
         public static List<Prepod> prepods = new List<Prepod>();
+        public static Exam exam;
         public ExamPage(Employee employee2)
         {
             InitializeComponent();
@@ -43,6 +44,7 @@ namespace Ychebnaya.Pages
 
         private void DisciplinaLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            exam = DisciplinaLv.SelectedItem as Exam;
             NavigationService.Navigate(new StudentsPage((Exam)DisciplinaLv.SelectedItem));
         }
     }

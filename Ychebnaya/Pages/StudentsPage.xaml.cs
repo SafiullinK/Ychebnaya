@@ -29,10 +29,14 @@ namespace Ychebnaya.Pages
         public StudentsPage(Exam exam)
         {
             InitializeComponent();
+            DisciplineNameTb.Text = ExamPage.exam.Disciplina.Name;
+            DisciplineDateTb.Text = ExamPage.exam.date.ToString().Split(' ')[0];
             students = StudentFunction.GetStudents().ToList();
-            exams = new List<Exam>(DBConnection.ychebnayaEntities.Exam.ToList().Where(x => x.date == exam.date && x.Disciplina == exam.Disciplina));
+            exams = new List<Exam>(DBConnection.ychebnayaEntities.Exam.ToList().Where(x => x.date == ExamPage.exam.date && x.Disciplina == exam.Disciplina));
             this.DataContext = this;
             StudentLv.ItemsSource = exams;
+            StudentCb.ItemsSource = students;
+            StudentCb.DisplayMemberPath = "ID";
             
 
 
@@ -55,7 +59,47 @@ namespace Ychebnaya.Pages
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new StudentAdd());
+            if (StudentCb.SelectedItem == null)
+            {
+                MessageBox.Show("Заполните все поля!");
+            }
+            else
+            {
+                Exam exam = new Exam
+                {
+                    date = ExamPage.exam.date,
+                    id_prepod = ExamPage.exam.id_prepod,
+                    id_discipline = ExamPage.exam.id_discipline,
+                    auditoriya = ExamPage.exam.auditoriya,
+                    id_student = (StudentCb.SelectedItem as Student).ID
+                };
+
+                DBConnection.ychebnayaEntities.Exam.Add(exam);
+                DBConnection.ychebnayaEntities.SaveChanges();
+
+                MessageBox.Show("Данные записаны!");
+
+                StudentLv.ItemsSource = new List<Exam>(DBConnection.ychebnayaEntities.Exam.ToList().Where(x => x.date == ExamPage.exam.date && x.Disciplina == ExamPage.exam.Disciplina));
+
+                StudentCb.SelectedItem = null;
+            }
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (StudentLv.SelectedItem != null)
+            {
+                DBConnection.ychebnayaEntities.Exam.Remove(StudentLv.SelectedItem as Exam);
+                DBConnection.ychebnayaEntities.SaveChanges();
+
+                MessageBox.Show("Данные удалены!");
+
+                StudentLv.ItemsSource = new List<Exam>(DBConnection.ychebnayaEntities.Exam.ToList().Where(x => x.date == ExamPage.exam.date && x.Disciplina == ExamPage.exam.Disciplina));
+            }
+            else
+            {
+                MessageBox.Show("Выберите строку для удаления!");
+            }
         }
     }
 }
